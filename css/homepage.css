@@ -1,0 +1,29 @@
+datalist {
+    display: flex;
+    justify-content: space-around;
+    color: grey;
+    width: 100%;
+    text-align: center;
+}
+
+input[type="range"] {
+    width: 85%;
+    filter: hue-rotate(130deg);
+}
+
+.status-slider {
+    width: 100%;
+    text-align: center;
+}
+
+.form-control-range {
+    background: red;
+}
+
+#v-pills-tabContent {
+    width: 100%;
+}
+
+table {
+    text-align: center;
+}
