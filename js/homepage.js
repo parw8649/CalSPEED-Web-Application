@@ -1,74 +1,7 @@
-
 function I(i){return document.getElementById(i);}
-
-//LIST OF TEST SERVERS. See documentation for details if needed
-var SPEEDTEST_SERVERS=[
-	{	//this server doesn't actually exist, remove it
-		name:"California Server", //user friendly name for the server
-		server:"//127.0.0.1:5500/", //URL to the server. // at the beginning will be replaced with http:// or https:// automatically
-		dlURL:"backend/garbage.php",  //path to download test on this server (garbage.php or replacement)
-		ulURL:"backend/empty.php",  //path to upload test on this server (empty.php or replacement)
-		pingURL:"backend/empty.php",  //path to ping/jitter test on this server (empty.php or replacement)
-		getIpURL:"backend/getIP.php"  //path to getIP on this server (getIP.php or replacement)
-	},
-	{	//this server doesn't actually exist, remove it
-		name:"Virginia Server", //user friendly name for the server
-		server:"//test2.example.com/", //URL to the server. // at the beginning will be replaced with http:// or https:// automatically
-		dlURL:"garbage.php",  //path to download test on this server (garbage.php or replacement)
-		ulURL:"empty.php",  //path to upload test on this server (empty.php or replacement)
-		pingURL:"empty.php",  //path to ping/jitter test on this server (empty.php or replacement)
-		getIpURL:"getIP.php"  //path to getIP on this server (getIP.php or replacement)
-	}
-	//add other servers here, comma separated
-];
-
 //INITIALIZE SPEEDTEST
 var s=new Speedtest(); //create speedtest object
 s.setParameter("telemetry_level","basic"); //enable telemetry
-
-//SERVER AUTO SELECTION
-function initServers(){
-	console.log("Inside Initservers method");
-    var noServersAvailable=function(){
-        I("message").innerHTML="No servers available";
-    }
-    var runServerSelect=function(){
-        s.selectServer(function(server){
-            if(server!=null){ //at least 1 server is available
-                I("loading").className="hidden"; //hide loading message
-                //populate server list for manual selection
-                for(var i=0;i<SPEEDTEST_SERVERS.length;i++){
-                    if(SPEEDTEST_SERVERS[i].pingT==-1) continue;
-                    var option=document.createElement("option");
-                    option.value=i;
-                    option.textContent=SPEEDTEST_SERVERS[i].name;
-                    if(SPEEDTEST_SERVERS[i]===server) option.selected=true;
-                    I("server").appendChild(option);
-                }
-                //show test UI
-                I("testWrapper").className="visible";
-                initUI();
-            }else{ //no servers are available, the test cannot proceed
-                noServersAvailable();
-            }
-        });
-    }
-    if(typeof SPEEDTEST_SERVERS === "string"){
-        //need to fetch list of servers from specified URL
-        s.loadServerList(SPEEDTEST_SERVERS,function(servers){
-            if(servers==null){ //failed to load server list
-                noServersAvailable();
-            }else{ //server list loaded
-                SPEEDTEST_SERVERS=servers;
-                runServerSelect();
-            }
-        });
-    }else{
-        //hardcoded server list
-        s.addTestPoints(SPEEDTEST_SERVERS);
-        runServerSelect();
-    }
-}
 
 var meterBk=/Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent)?"#EAEAEA":"#80808040";
 var dlColor="#6060AA",
@@ -117,24 +50,19 @@ var uiData=null;
 function startStop(){
     if(s.getState()==3){
 		//speedtest is running, abort
-        console.log("Speedtest is already running!");
 		s.abort();
 		data=null;
 		I("startStopBtn").className="";
-		I("server").disabled=false;
 		initUI();
 	}else{
 		//test is not running, begin
-        console.log("Speedtest started");
 		I("startStopBtn").className="running";
 		I("shareArea").style.display="none";
-		I("server").disabled=true;
 		s.onupdate=function(data){
             uiData=data;
 		};
 		s.onend=function(aborted){
             I("startStopBtn").className="";
-            I("server").disabled=false;
             updateUI(true);
             if(!aborted){
                 //if testId is present, show sharing panel, otherwise do nothing
