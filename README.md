@@ -28,8 +28,6 @@ Extras: using Winscp to transfer files from EC2 instances into local storage.
 The next steps are how the database became functional or active. PHPmyadmin
 
 Virtualization
-You would need virtualbox, a Lunix OS, most version of ubuntu work,
-https://fdossena.com/?p=speedtest/quickstart_v5_ubuntu.frag
+You would need virtualbox, a Linux OS, most version of ubuntu work, https://fdossena.com/?p=speedtest/quickstart_v5_ubuntu.frag
 
-How to use winsp to transfer files from ec2 instance to personal computer 
-https://winscp.net/eng/docs/guide_amazon_ec2
+How to use winsp to transfer files from ec2 instance to personal computer, https://winscp.net/eng/docs/guide_amazon_ec2
