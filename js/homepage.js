@@ -68,8 +68,8 @@ function startStop(){
             updateUI(true);
             if(!aborted){
                 //if testId is present, show sharing panel, otherwise do nothing
+				I("customRange3").value="12";
                 try{
-					I("customRange3").value="12";
                     var testId=uiData.testId;
                     if(testId!=null){
                         var shareURL=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/results/?id="+testId;
@@ -77,7 +77,7 @@ function startStop(){
                         I("resultsURL").value=shareURL;
                         I("testId").innerHTML=testId;
                         I("shareArea").style.display="";
-                    }
+					}
                 }catch(e){}
             } else {
 				I("customRange3").value="0";

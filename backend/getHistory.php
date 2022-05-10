@@ -3,9 +3,9 @@ include("db.php");
 
 # fetch query
 function fetch_data(){
-  $query="SELECT * from user_results.speedtest_users ORDER BY id DESC Limit 20";
+  $query="SELECT * from speedtest_users ORDER BY id DESC Limit 20";
   $exec=mysqli_query($conn, $query);
-  if(mysqli_num_rows($exec)>0){
+  if(mysqli_num_rows($exec) > 0){
     $row= mysqli_fetch_all($exec, MYSQLI_ASSOC);
     return $row;  
         
