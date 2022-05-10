@@ -56,12 +56,15 @@ function startStop(){
 		initUI();
 	}else{
 		//test is not running, begin
+		I("customRange3").value="1";
 		I("startStopBtn").className="running";
 		I("shareArea").style.display="none";
 		s.onupdate=function(data){
             uiData=data;
+			I("customRange3").value="6";
 		};
 		s.onend=function(aborted){
+			I("customRange3").value="12";
             I("startStopBtn").className="";
             updateUI(true);
             if(!aborted){
@@ -113,4 +116,17 @@ function initUI(){
 	I("pingText").textContent="";
 	I("jitText").textContent="";
 	I("ip").textContent="";
+	I("customRange3").value="0";
 }
+
+//fetch history data
+// $(document).on('click','#v-pills-history-tab',function(e){
+// 	$.ajax({    
+// 	  type: "GET",
+// 	  url: "backend/getHistory.php",             
+// 	  dataType: "html",                  
+// 	  success: function(data){                    
+// 		  $("#historyData").html(data); 
+// 	  }
+//   });
+// });
