@@ -56,12 +56,11 @@ function startStop(){
 		initUI();
 	}else{
 		//test is not running, begin
-		I("customRange3").value="1";
+		I("customRange3").value="6";
 		I("startStopBtn").className="running";
 		I("shareArea").style.display="none";
 		s.onupdate=function(data){
             uiData=data;
-			I("customRange3").value="6";
 		};
 		s.onend=function(aborted){
             I("startStopBtn").className="";
