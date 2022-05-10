@@ -14,7 +14,7 @@ function fetch_data(){
   }
 }
 
-$fetchData= fetch_data();
+$fetchData= getSpeedtestHistory();
 
 show_data($fetchData);
 
@@ -24,7 +24,6 @@ function show_data($fetchData) {
      
       foreach($fetchData as $data){ 
         echo "<tr>
-                <td>".$sn."</td>
                 <td>".$data['timestamp']."</td>
                 <td>".$data['ip']."</td>
                 <td>".$data['ua']."</td>
@@ -41,5 +40,39 @@ function show_data($fetchData) {
                 <td colspan='9'>No Data Found</td>
             </tr>"; 
     }
+}
+
+
+/**
+ * @return array|null|false returns the speedtest data as array, null
+ *                          if no data is found or false if there was an error
+ *
+ * @throws RuntimeException
+ */
+function getSpeedtestHistory()
+{
+    $pdo = getPdo();
+    if (!($pdo instanceof PDO)) {
+        return false;
+    }
+
+    try {
+        $stmt = $pdo->prepare(
+            'SELECT timestamp, ip, ispinfo, ua, lang, dl, ul, ping, jitter, log, extra
+            FROM speedtest_users
+            ORDER BY timestamp DESC
+            LIMIT 20'
+        );
+        $stmt->execute();
+        $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        return false;
+    }
+
+    if (!is_array($rows)) {
+        return null;
+    }
+
+    return $rows;
 }
 ?>
