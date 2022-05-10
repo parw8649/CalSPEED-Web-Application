@@ -122,13 +122,13 @@ function initUI(){
 }
 
 //fetch history data
-// $(document).on('click','#v-pills-history-tab',function(e){
-// 	$.ajax({    
-// 	  type: "GET",
-// 	  url: "backend/getHistory.php",             
-// 	  dataType: "html",                  
-// 	  success: function(data){                    
-// 		  $("#historyData").html(data); 
-// 	  }
-//   });
-// });
+$(document).on('click','#v-pills-history-tab',function(e){
+ 	$.ajax({    
+ 	  type: "GET",
+	  url: "backend/getHistory.php",             
+	  dataType: "html",                  
+	  success: function(data){                    
+		  $("#historyData").html(data); 
+	  }
+  });
+});
