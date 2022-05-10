@@ -4,25 +4,27 @@ include("db.php");
 # fetch query
 function fetch_data(){
   $query="SELECT * from speedtest_users ORDER BY id DESC Limit 20";
-  $exec=mysqli_query($conn, $query);
-  if(mysqli_num_rows($exec) > 0){
-    $row= mysqli_fetch_all($exec, MYSQLI_ASSOC);
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    $row= $result->fetch_assoc();
     return $row;  
         
   }else{
     return $row=[];
-  }
+  }	
 }
 
-$fetchData= fetch_data();
+$data= fetch_data();
 
-show_data($fetchData);
+show_data($data);
 
-function show_data($fetchData) {
+function show_data($data) {
+
+  echo ".$data.";
   
-    if(count($fetchData) > 0){
-     
-      foreach($fetchData as $data){ 
+    if(count($data) > 0){
+    
+      while($data) { 
         echo "<tr>
                 <td>".$data['timestamp']."</td>
                 <td>".$data['ip']."</td>
