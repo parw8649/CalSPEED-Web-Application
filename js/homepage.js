@@ -64,12 +64,12 @@ function startStop(){
 			I("customRange3").value="6";
 		};
 		s.onend=function(aborted){
-			I("customRange3").value="12";
             I("startStopBtn").className="";
             updateUI(true);
             if(!aborted){
                 //if testId is present, show sharing panel, otherwise do nothing
                 try{
+					I("customRange3").value="12";
                     var testId=uiData.testId;
                     if(testId!=null){
                         var shareURL=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/results/?id="+testId;
@@ -79,7 +79,9 @@ function startStop(){
                         I("shareArea").style.display="";
                     }
                 }catch(e){}
-            }
+            } else {
+				I("customRange3").value="0";
+			}
 		};
 		s.start();
 	}
