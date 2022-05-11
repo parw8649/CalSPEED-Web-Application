@@ -1,6 +1,8 @@
 <?php
 #include("db.php");
+require '../results/telemetry_settings.php';
 require_once '../results/telemetry_db.php';
+
 
 # fetch query
 function fetch_data(){
@@ -23,8 +25,11 @@ function show_data($fetchData) {
   
     if(count($fetchData) > 0){
      
+    $sn = 1;
+    echo $sn;
       foreach($fetchData as $data){ 
         echo "<tr>
+                <td>".$sn."</td>
                 <td>".$data['timestamp']."</td>
                 <td>".$data['ip']."</td>
                 <td>".$data['ua']."</td>
@@ -35,6 +40,7 @@ function show_data($fetchData) {
                 <td>".$data['jitter']."</td>
                 <td>".$data['ispinfo']."</td>
             </tr>";
+        $sn++;
      }
     } else {   
         echo "<tr>

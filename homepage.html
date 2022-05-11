@@ -15,21 +15,20 @@
 <body>
 <!-- body content -->
 <div class="d-flex">
-	<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-		<br><br><img src = "/images/logo-big-calspeed.png" height="175" width="175" alt="Calspeed_logo"><br>
+	<div class="nav flex-column nav-pills me-2 p-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		<img src = "/images/logo-big-calspeed.png" height="175" width="175" alt="Calspeed_logo"><br>
 		<hr>
 		<button class="nav-link active" id="v-pills-tester-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tester" type="button" role="tab" aria-controls="v-pills-tester" aria-selected="true">Tester</button>
 		<button class="nav-link" id="v-pills-history-tab" data-bs-toggle="pill" data-bs-target="#v-pills-history" type="button" role="tab" aria-controls="v-pills-history" aria-selected="false">History</button>
+		<button class="nav-link" id="v-pills-about-tab" data-bs-toggle="pill" data-bs-target="#v-pills-about" type="button" role="tab" aria-controls="v-pills-about" aria-selected="false">About</button>
 		<!-- 
-		<button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
-		<button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+			<button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
 		-->
 	</div>
 	<div class="tab-content" id="v-pills-tabContent">
-		<div class="mt-4 p-3 bg-dark text-white rounded"><h1><strong>CalSPEED</strong></h1></div>
-		<br>
 		<!-- Tester tab -->
 		<div class="tab-pane fade show active" id="v-pills-tester" role="tabpanel" aria-labelledby="v-pills-tester-tab">
+			<div class="mt-4 p-3 text-white rounded" id="contentTitle"><h1><strong>CalSPEED</strong></h1></div><br>
 			<div class="status-slider">
 				<datalist id="tickmarks">
 					<option value="start" label="Start"></option>
@@ -75,9 +74,10 @@
 								<div id="ulText" class="meterText"></div>
 								<div class="unit">Mbps</div>
 							</div>
-						</div>
-						<div id="ipArea">
-							<span id="ip"></span>
+						</div><br>
+						<div id="ipArea" style="display:none">
+							<span><img src="images/server_img.png" height="25" width="25">  Virginia Server</span><br>
+							<img src="images/profile.png" height="25" width="25"><span id="ip"></span>
 						</div>
 						<div id="shareArea" style="display:none">
 							<h3>Share results</h3>
@@ -86,6 +86,8 @@
 						</div>
 					</div>
 				</div>
+				<hr style="color: #ff3333; height: 3px;">
+				<div style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;© CalSPEED 2022</div>
 				<div id="privacyPolicy" style="display:none">
 					<div class="mt-2 p-1 bg-dark text-white rounded" id="privacyTitle"><h2>Privacy Policy</h2></div><br>
 					<p>This HTML5 Speedtest server is configured with telemetry enabled.</p>
@@ -126,10 +128,12 @@
 		</div>
 		<!-- History tab -->
 		<div class="tab-pane fade" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">
+			<div class="mt-4 p-3 text-white rounded" id="contentTitle"><h1><strong>CalSPEED History</strong></h1></div><br>
 			<div class="table-responsive">
 				<table class="table table-striped table-dark table-hover">
 					<thead class="table table-striped table-dark table-hover">
 						<tr>
+							<th>SR No.</th>
 							<th>Date</th>
 							<th>IP</th>
 							<th>UA</th>
@@ -155,13 +159,43 @@
 						</tr>
 					</tbody>
 				</table>
+				<hr style="color: #ff3333; height: 3px;">
+				<div style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;© CalSPEED 2022</div>
 				<br><br><br><br><br><br><br><br><br><br><br><br>
 				<br><br><br><br><br><br><br><br><br><br><br><br>
 			</div>
 		</div>
+		<!-- About tab -->
+		<div class="tab-pane fade" id="v-pills-about" role="tabpanel" aria-labelledby="#v-pills-about-tab">
+			<div class="mt-4 p-3 text-white rounded" id="contentTitle"><h1><strong>About CalSPEED</strong></h1></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2"></div>
+					<div class="col-lg-8" id="aboutCalspeed">
+						<hr style="color: #ff3333; height: 3px;">
+						<b><u>CalSPEED</u></b>, released by the California Public Utilities Commission (CPUC), empowers end-users with a professional-level, 
+						industry-standard testing tool to measure the quality and speed of their residential fixed internet connection.<br><br>
+						CalSPEED conducts a two-phase test including initial testing and results validation in order to ensure statistically significant measurements.
+						This Web based speed test application allows users to add run a network speedtest without downloading or installing any application. 
+						It is easy to maintain, convenient and proves portability.<br><br>
+						The objective of this project is to create a web based application capable of competing against other high end speed tests on the internet. 
+						The web based app accurately measures and stores download speed, message delay (latency), 
+						and message delay variation (jitter) across multiple devices while maintaining security.<br>
+
+						<br>References:
+						<a href="https://github.com/parw8649/CalSPEED-Web-Application" target="_blank" data-toggle="tooltip" data-placement="top" title="Github"><img src="images/github.png" height="35" width="38" alt="github_link"></a>
+
+						<hr style="color: #ff3333; height: 3px;">
+						<div style="text-align: left;">© CalSPEED 2022</div>
+					</div>
+					<div class="col-lg-2"></div>
+				</div>
+			</div>
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+		</div>
 		<!--
-		<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"></div>
-		<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"></div>
+			<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"></div>
 		-->
 	</div>
 </div>
