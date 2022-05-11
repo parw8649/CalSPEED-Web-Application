@@ -2,14 +2,11 @@
 html,body{
     border:none; padding:0; margin:0;
     background:#FFFFFF;
-    color:#202020;
+    color:#FFFFFF;
 }
 body{
     text-align:center;
     font-family:"Roboto",sans-serif;
-}
-h1{
-    color:#404040;
 }
 #startStopBtn{
     display:inline-block;
@@ -116,10 +113,10 @@ div.testGroup{
 }
 #privacyPolicy{
     position:fixed;
-    top:2em;
-    bottom:2em;
-    left:2em;
-    right:2em;
+    top:6em;
+    bottom:6em;
+    left:30em;
+    right:20em;
     overflow-y:auto;
     width:auto;
     height:auto;
@@ -127,7 +124,11 @@ div.testGroup{
     z-index:999999;
     text-align:left;
     background-color:#FFFFFF;
+    color: #000000;
     padding:1em;
+}
+#privacyTitle {
+    text-align: center;
 }
 a.privacy{
     text-align:center;

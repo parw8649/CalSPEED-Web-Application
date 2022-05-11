@@ -4,8 +4,8 @@ var s=new Speedtest(); //create speedtest object
 s.setParameter("telemetry_level","basic"); //enable telemetry
 
 var meterBk=/Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent)?"#EAEAEA":"#80808040";
-var dlColor="#6060AA",
-	ulColor="#616161";
+var dlColor="#66ffff",
+	ulColor="#bf00ff";
 var progColor=meterBk;
 
 //CODE FOR GAUGES
@@ -56,10 +56,11 @@ function startStop(){
 		initUI();
 	}else{
 		//test is not running, begin
-		I("customRange3").value="6";
+		I("customRange3").value="1";
 		I("startStopBtn").className="running";
 		I("shareArea").style.display="none";
 		s.onupdate=function(data){
+			I("customRange3").value="6";
             uiData=data;
 		};
 		s.onend=function(aborted){

@@ -1,5 +1,6 @@
 <?php
-include("db.php");
+#include("db.php");
+require_once '../results/telemetry_db.php';
 
 # fetch query
 function fetch_data(){

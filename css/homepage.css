@@ -1,7 +1,7 @@
 datalist {
     display: flex;
     justify-content: space-around;
-    color: grey;
+    color: whitesmoke;
     width: 100%;
     text-align: center;
 }
@@ -22,12 +22,9 @@ input[type="range"] {
 
 #v-pills-tabContent {
     width: 100%;
+    background-color: #202022;
 }
 
 table {
     text-align: center;
-}
-
-#v-pills-tabContent {
-    background-color: aqua;
 }
