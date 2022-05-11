@@ -53,6 +53,7 @@ function startStop(){
 		s.abort();
 		data=null;
 		I("startStopBtn").className="";
+		$("ipArea").hide();
 		initUI();
 	}else{
 		//test is not running, begin
@@ -91,7 +92,7 @@ function updateUI(forced){
 	if(!forced&&s.getState()!=3) return;
 	if(uiData==null) return;
 	var status=uiData.testState;
-	I("ipArea").style.display="";
+	I("ipArea").style.display="block";
 	I("ip").textContent=uiData.clientIp;
 	I("dlText").textContent=(status==1&&uiData.dlStatus==0)?"...":format(uiData.dlStatus);
 	drawMeter(I("dlMeter"),mbpsToAmount(Number(uiData.dlStatus*(status==1?oscillate():1))),meterBk,dlColor,Number(uiData.dlProgress),progColor);
@@ -117,7 +118,7 @@ function initUI(){
 	I("dlText").textContent="";
 	I("ulText").textContent="";
 	I("pingText").textContent="";
-	I("jitText").textContent="";
+	I("jitText").textContent="";	
 	I("ip").textContent="";
 	I("customRange3").value="0";
 }
