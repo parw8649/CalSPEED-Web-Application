@@ -53,13 +53,14 @@ function startStop(){
 		s.abort();
 		data=null;
 		I("startStopBtn").className="";
-		$("ipArea").hide();
+		I("ipArea").className="d-none";
 		initUI();
 	}else{
 		//test is not running, begin
 		I("customRange3").value="1";
 		I("startStopBtn").className="running";
 		I("shareArea").style.display="none";
+		I("ipArea").className="d-block";
 		s.onupdate=function(data){
 			I("customRange3").value="6";
             uiData=data;
@@ -92,7 +93,6 @@ function updateUI(forced){
 	if(!forced&&s.getState()!=3) return;
 	if(uiData==null) return;
 	var status=uiData.testState;
-	I("ipArea").style.display="block";
 	I("ip").textContent=uiData.clientIp;
 	I("dlText").textContent=(status==1&&uiData.dlStatus==0)?"...":format(uiData.dlStatus);
 	drawMeter(I("dlMeter"),mbpsToAmount(Number(uiData.dlStatus*(status==1?oscillate():1))),meterBk,dlColor,Number(uiData.dlProgress),progColor);
@@ -134,3 +134,11 @@ $(document).on('click','#v-pills-history-tab',function(e){
 	  }
   });
 });
+
+function openNav() {
+	document.getElementById("v-pills-tab").style.width = "13%";
+}
+
+function closeNav() {
+	document.getElementById("v-pills-tab").style.width = "0%";
+}

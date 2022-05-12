@@ -29,11 +29,6 @@ table {
     text-align: center;
 }
 
-.nav-link {
-    padding: 15%;
-    font-size: x-large;
-}
-
 #aboutCalspeed {
     text-align: justify;
 }
@@ -41,3 +36,49 @@ table {
 #contentTitle {
     background-color: #0099cc;
 }
+
+.nav-link {
+    padding: 8%;
+    font-size: x-large;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,1);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay a {
+    padding: 4px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: #202022;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    font-size: 30px;
+  }
+  
+  @media screen and (max-height: 1000px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 1px;
+    right: 10px;
+    }
+  }
