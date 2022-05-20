@@ -1,6 +1,6 @@
 <?php
-require 'results/telemetry_settings.php';
-require_once 'results/telemetry_db.php';
+require '../results/telemetry_settings.php';
+require_once '../results/telemetry_db.php';
 
 $fetchData= fetchSpeedTestHistory();
 
