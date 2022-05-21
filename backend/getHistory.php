@@ -2,19 +2,21 @@
 require '../results/telemetry_settings.php';
 require_once '../results/telemetry_db.php';
 
+ini_set('display_errors', 1);
+
 $fetchData= fetchSpeedTestHistory();
 
 show_data($fetchData);
 
 function fetchSpeedTestHistory() {
 
-    $test_pdo = getPdo();
-    if (!($test_pdo instanceof PDO)) {
-        echo '<tr><td colspan='10'>There was a PDO error.</td></tr>';
-        return false;
-    }
-
     try {
+        $test_pdo = getPdo();
+        if (!($test_pdo instanceof PDO)) {
+            echo "<tr><td colspan='10'>There was a PDO error.</td></tr>";
+            return false;
+        }
+    
         $stmt = $test_pdo->query(
                 'SELECT
                 id, timestamp, ip, ispinfo, ua, lang, dl, ul, ping, jitter, log, extra
@@ -29,6 +31,7 @@ function fetchSpeedTestHistory() {
                 $rows[$i]['id_formatted'] = $row['id'];
             }
         } catch (Exception $e) {
+            echo "<tr><td colspan='10'>$e</td></tr>"
             return false;
         }
 
