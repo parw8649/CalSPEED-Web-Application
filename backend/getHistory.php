@@ -8,10 +8,7 @@ show_data($fetchData);
 
 function fetchSpeedTestHistory() {
 
-    $dsn = 'mysql:'.'host='.$MySql_hostname.';port='.$MySql_port.';dbname='.$MySql_databasename;
-
-    $test_pdo = new PDO($dsn, $MySql_username, $MySql_password, $pdoOptions);
-
+    $test_pdo = getPdo();
     if (!($test_pdo instanceof PDO)) {
         echo '<tr><td colspan='10'>There was a PDO error.</td></tr>';
         return false;
@@ -23,7 +20,7 @@ function fetchSpeedTestHistory() {
                 id, timestamp, ip, ispinfo, ua, lang, dl, ul, ping, jitter, log, extra
                 FROM speedtest_users
                 ORDER BY timestamp DESC
-                LIMIT 10'
+                LIMIT 100'
             );
     
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
